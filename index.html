@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Mental State vs Race Performance</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Mental State vs Race Performance</h1>
+
+<p>Runner Psychology Research Project</p>
+
+<form id="raceForm">
+
+<label>Race Distance</label>
+
+<select id="distance" required>
+<option value="">Select Distance</option>
+<option>800m</option>
+<option>1600m</option>
+<option>3200m</option>
+<option>5K</option>
+<option>10K</option>
+<option>Half Marathon</option>
+<option>Marathon</option>
+</select>
+
+<label>Confidence Before Race (1-10)</label>
+<input type="number" id="confidence" min="1" max="10" required>
+
+<label>Anxiety Before Race (1-10)</label>
+<input type="number" id="anxiety" min="1" max="10" required>
+
+<label>Sleep Night Before (Hours)</label>
+<input type="number" id="sleep" step="0.1" required>
+
+<label>Race Satisfaction (1-10)</label>
+<input type="number" id="satisfaction" min="1" max="10" required>
+
+<label>Performance</label>
+
+<select id="performance" required>
+
+<option value="">Select</option>
+<option value="PR">PR</option>
+<option value="season">Season Best</option>
+<option value="average">Average Race</option>
+<option value="bad">Bad Race</option>
+
+</select>
+
+<button type="submit">Submit Race Data</button>
+
+</form>
+
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+
+</html>

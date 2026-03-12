@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Research Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Research Dashboard</h1>
+
+<div class="stats">
+
+<p>Total Runs: <span id="totalRuns">0</span></p>
+
+<p>Avg Confidence: <span id="avgConfidence">0</span></p>
+
+<p>Avg Anxiety: <span id="avgAnxiety">0</span></p>
+
+<p>Avg Sleep: <span id="avgSleep">0</span></p>
+
+<p>Avg Satisfaction: <span id="avgSatisfaction">0</span></p>
+
+</div>
+
+<h2>Confidence vs Performance</h2>
+<canvas id="confidenceChart"></canvas>
+
+<h2>Anxiety vs Performance</h2>
+<canvas id="anxietyChart"></canvas>
+
+<h2>Sleep vs Performance</h2>
+<canvas id="sleepChart"></canvas>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = { /* paste same config */ };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadData(){
+
+const snapshot = await getDocs(collection(db,"runs"));
+
+let runs=[];
+
+snapshot.forEach(doc=>runs.push(doc.data()));
+
+document.getElementById("totalRuns").innerText=runs.length;
+
+function avg(arr){
+
+if(arr.length==0)return 0;
+
+return (arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(2);
+
+}
+
+document.getElementById("avgConfidence").innerText=avg(runs.map(r=>r.confidence));
+document.getElementById("avgAnxiety").innerText=avg(runs.map(r=>r.anxiety));
+document.getElementById("avgSleep").innerText=avg(runs.map(r=>r.sleep));
+document.getElementById("avgSatisfaction").innerText=avg(runs.map(r=>r.satisfaction));
+
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
