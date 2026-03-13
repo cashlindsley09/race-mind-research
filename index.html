@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
+
 
 <title>Mental State vs Race Performance</title>
 
+
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
+
 <h1>Mental State vs Race Performance</h1>
+
 
 <p>This project collects anonymous data from runners to explore how mental state before a race relates to race performance and satisfaction.
 
-    The goal of this research is to better understand patterns between psychological factors and race outcomes. By gathering data from many runners across different distances and experience levels, the project aims to identify trends such as whether higher confidence is associated with better performance, whether anxiety affects race satisfaction, and how sleep may influence race experiences.
-    </p>
+
+   The goal of this research is to better understand patterns between psychological factors and race outcomes. By gathering data from many runners across different distances and experience levels, the project aims to identify trends such as whether higher confidence is associated with better performance, whether anxiety affects race satisfaction, and how sleep may influence race experiences.
+   </p>
+
 
 <form id="raceForm">
 
+
 <label>Race Distance</label>
+
 
 <select id="distance" required>
 
+
 <option value="">Select Distance</option>
+
 
 <option>800m</option>
 <option>1000m</option>
@@ -39,42 +53,59 @@
 <option>Half Marathon</option>
 <option>Marathon</option>
 
+
 </select>
+
 
 <label>Confidence Before Race (1-10)</label>
 <input type="number" id="confidence" min="1" max="10" required>
 
+
 <label>Anxiety Before Race (1-10)</label>
 <input type="number" id="anxiety" min="1" max="10" required>
+
 
 <label>Sleep Night Before (Hours)</label>
 <input type="number" id="sleep" step="0.1" required>
 
+
 <label>Race Satisfaction (1-10)</label>
 <input type="number" id="satisfaction" min="1" max="10" required>
 
+
 <label>Performance</label>
 
+
 <select id="performance" required>
+
 
 <option value="">Select</option>
 <option value="PR">PR</option>
 <option value="season">Season Best</option>
+<option value="good">Good Race</option>
 <option value="average">Average Race</option>
 <option value="bad">Bad Race</option>
 
+
 </select>
+
 
 <button type="submit">Submit Race Data</button>
 
+
 </form>
+
 
 <p id="successMessage">Entry submitted!</p>
 
+
 </div>
+
 
 <script type="module" src="app.js"></script>
 
+
 </body>
+
 
 </html>

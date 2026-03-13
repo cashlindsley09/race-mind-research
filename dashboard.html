@@ -1,57 +1,81 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
+
 
 <title>Research Dashboard</title>
 
+
 <link rel="stylesheet" href="style.css">
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
 
 <h1>Research Dashboard</h1>
 
+
 <div class="stats">
+
 
 <p>Total Runs: <span id="totalRuns">0</span></p>
 
+
 <p>Avg Confidence: <span id="avgConfidence">0</span></p>
+
 
 <p>Avg Anxiety: <span id="avgAnxiety">0</span></p>
 
+
 <p>Avg Sleep: <span id="avgSleep">0</span></p>
+
 
 <p>Avg Satisfaction: <span id="avgSatisfaction">0</span></p>
 
+
 </div>
 
+
 <h2>Performance Counts</h2>
+
 
 <p>PR: <span id="prCount">0</span></p>
 <p>Season Best: <span id="seasonCount">0</span></p>
 <p>Average Race: <span id="averageCount">0</span></p>
 <p>Bad Race: <span id="badCount">0</span></p>
 
+
 <h2>Confidence vs Performance</h2>
 <canvas id="confidenceChart"></canvas>
+
 
 <h2>Anxiety vs Performance</h2>
 <canvas id="anxietyChart"></canvas>
 
+
 <h2>Sleep vs Performance</h2>
 <canvas id="sleepChart"></canvas>
 
+
 </div>
+
 
 <script type="module">
 
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
 
 import {
 getFirestore,
@@ -59,36 +83,51 @@ collection,
 getDocs
 }
 
+
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 
+
+
 const firebaseConfig = {
-    apiKey: "AIzaSyA_g0rhhpI8dIXohYk6wOf86vwsA9M5y-Y",
-    authDomain: "race-mind-research-c10a7.firebaseapp.com",
-    projectId: "race-mind-research-c10a7",
-    storageBucket: "race-mind-research-c10a7.firebasestorage.app",
-    messagingSenderId: "79866981043",
-    appId: "1:79866981043:web:964f181a5ecf0e97885ec6"
-  };
+   apiKey: "AIzaSyA_g0rhhpI8dIXohYk6wOf86vwsA9M5y-Y",
+   authDomain: "race-mind-research-c10a7.firebaseapp.com",
+   projectId: "race-mind-research-c10a7",
+   storageBucket: "race-mind-research-c10a7.firebasestorage.app",
+   messagingSenderId: "79866981043",
+   appId: "1:79866981043:web:964f181a5ecf0e97885ec6"
+ };
+
+
 
 
 const app = initializeApp(firebaseConfig);
 
+
 const db = getFirestore(app);
+
+
 
 
 async function loadData(){
 
+
 const snapshot = await getDocs(collection(db,"runs"));
 
+
 let data=[];
+
 
 snapshot.forEach(doc=>{
 data.push(doc.data());
 });
 
 
+
+
 document.getElementById("totalRuns").innerText=data.length;
+
+
 
 
 let confidenceTotal=0;
@@ -97,37 +136,54 @@ let sleepTotal=0;
 let satisfactionTotal=0;
 
 
+
+
 let pr=0;
 let season=0;
 let average=0;
 let bad=0;
 
 
+
+
 data.forEach(run=>{
+
 
 confidenceTotal+=run.confidence;
 anxietyTotal+=run.anxiety;
 sleepTotal+=run.sleep;
 satisfactionTotal+=run.satisfaction;
 
+
 if(run.performance==="PR") pr++;
+
 
 if(run.performance==="season") season++;
 
+
 if(run.performance==="average") average++;
 
+
 if(run.performance==="bad") bad++;
+
 
 });
 
 
+
+
 document.getElementById("avgConfidence").innerText=(confidenceTotal/data.length).toFixed(2);
+
 
 document.getElementById("avgAnxiety").innerText=(anxietyTotal/data.length).toFixed(2);
 
+
 document.getElementById("avgSleep").innerText=(sleepTotal/data.length).toFixed(2);
 
+
 document.getElementById("avgSatisfaction").innerText=(satisfactionTotal/data.length).toFixed(2);
+
+
 
 
 document.getElementById("prCount").innerText=pr;
@@ -136,96 +192,143 @@ document.getElementById("averageCount").innerText=average;
 document.getElementById("badCount").innerText=bad;
 
 
+
+
 let confidenceData=[0,0,0,0];
 let anxietyData=[0,0,0,0];
 let sleepData=[0,0,0,0];
 
 
+
+
 data.forEach(run=>{
 
+
 let index=0;
+
 
 if(run.performance==="PR") index=0;
 if(run.performance==="season") index=1;
 if(run.performance==="average") index=2;
 if(run.performance==="bad") index=3;
 
+
 confidenceData[index]+=run.confidence;
 anxietyData[index]+=run.anxiety;
 sleepData[index]+=run.sleep;
 
+
 });
+
+
 
 
 new Chart(document.getElementById("confidenceChart"),{
 
+
 type:"bar",
+
 
 data:{
 
+
 labels:["PR","Season Best","Average","Bad"],
+
 
 datasets:[{
 
+
 label:"Confidence",
+
 
 data:confidenceData
 
+
 }]
+
 
 }
 
+
 });
+
+
 
 
 new Chart(document.getElementById("anxietyChart"),{
 
+
 type:"bar",
+
 
 data:{
 
+
 labels:["PR","Season Best","Average","Bad"],
+
 
 datasets:[{
 
+
 label:"Anxiety",
+
 
 data:anxietyData
 
+
 }]
+
 
 }
 
+
 });
+
+
 
 
 new Chart(document.getElementById("sleepChart"),{
 
+
 type:"bar",
+
 
 data:{
 
+
 labels:["PR","Season Best","Average","Bad"],
+
 
 datasets:[{
 
+
 label:"Sleep Hours",
+
 
 data:sleepData
 
+
 }]
 
+
 }
+
 
 });
 
+
 }
+
+
 
 
 loadData();
 
+
 </script>
 
+
 </body>
+
 
 </html>

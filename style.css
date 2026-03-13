@@ -6,17 +6,17 @@ body {
     padding: 40px;
     line-height: 1.6;
     }
-    
+   
     .container{
     max-width:900px;
     margin:auto;
     }
-    
+   
     h1{
     text-align:center;
     color:#1f4fa8;
     }
-    
+   
     form{
     background:white;
     padding:25px;
@@ -25,13 +25,13 @@ body {
     max-width:500px;
     margin:auto;
     }
-    
+   
     label{
     display:block;
     margin-top:15px;
     font-weight:bold;
     }
-    
+   
     input,select{
     width:100%;
     padding:8px;
@@ -39,7 +39,7 @@ body {
     border-radius:6px;
     border:1px solid #ccc;
     }
-    
+   
     button{
     margin-top:20px;
     width:100%;
@@ -50,14 +50,15 @@ body {
     color:white;
     cursor:pointer;
     }
-    
+   
     button:hover{
     background:#1f4fa8;
     }
-    
+   
     #successMessage{
     display:none;
     color:green;
     text-align:center;
     margin-top:15px;
     }
+ 
