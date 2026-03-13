@@ -20,14 +20,15 @@
 <div class="stats">
 
 <p>Total Runs: <span id="totalRuns">0</span></p>
-
 <p>Avg Confidence: <span id="avgConfidence">0</span></p>
-
 <p>Avg Anxiety: <span id="avgAnxiety">0</span></p>
-
 <p>Avg Sleep: <span id="avgSleep">0</span></p>
-
 <p>Avg Satisfaction: <span id="avgSatisfaction">0</span></p>
+
+<p>PR: <span id="prCount">0</span></p>
+<p>Season Best: <span id="seasonCount">0</span></p>
+<p>Average Race: <span id="avgRaceCount">0</span></p>
+<p>Bad Race: <span id="badCount">0</span></p>
 
 </div>
 
@@ -52,10 +53,19 @@ collection,
 getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const firebaseConfig = { /* paste same config */ };
+
+const firebaseConfig = {
+apiKey:"PASTE SAME CONFIG",
+authDomain:"PASTE",
+projectId:"PASTE",
+storageBucket:"PASTE",
+messagingSenderId:"PASTE",
+appId:"PASTE"
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 
 async function loadData(){
 
@@ -68,17 +78,31 @@ snapshot.forEach(doc=>runs.push(doc.data()));
 document.getElementById("totalRuns").innerText=runs.length;
 
 function avg(arr){
-
-if(arr.length==0)return 0;
-
+if(arr.length===0)return 0;
 return (arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(2);
-
 }
 
 document.getElementById("avgConfidence").innerText=avg(runs.map(r=>r.confidence));
 document.getElementById("avgAnxiety").innerText=avg(runs.map(r=>r.anxiety));
 document.getElementById("avgSleep").innerText=avg(runs.map(r=>r.sleep));
 document.getElementById("avgSatisfaction").innerText=avg(runs.map(r=>r.satisfaction));
+
+
+let pr=0,season=0,average=0,bad=0;
+
+runs.forEach(r=>{
+
+if(r.performance==="PR")pr++;
+if(r.performance==="season")season++;
+if(r.performance==="average")average++;
+if(r.performance==="bad")bad++;
+
+});
+
+document.getElementById("prCount").innerText=pr;
+document.getElementById("seasonCount").innerText=season;
+document.getElementById("avgRaceCount").innerText=average;
+document.getElementById("badCount").innerText=bad;
 
 }
 

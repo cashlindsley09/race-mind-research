@@ -2,11 +2,8 @@
 <html>
 
 <head>
-
 <title>Mental State vs Race Performance</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -14,13 +11,11 @@
 <div class="container">
 
 <h1>Mental State vs Race Performance</h1>
-
 <p>Runner Psychology Research Project</p>
 
 <form id="raceForm">
 
 <label>Race Distance</label>
-
 <select id="distance" required>
 <option value="">Select Distance</option>
 <option>800m</option>
@@ -48,25 +43,23 @@
 <input type="number" id="satisfaction" min="1" max="10" required>
 
 <label>Performance</label>
-
 <select id="performance" required>
-
 <option value="">Select</option>
 <option value="PR">PR</option>
 <option value="season">Season Best</option>
 <option value="average">Average Race</option>
 <option value="bad">Bad Race</option>
-
 </select>
 
 <button type="submit">Submit Race Data</button>
 
 </form>
 
+<p id="successMessage">Entry submitted!</p>
+
 </div>
 
 <script type="module" src="app.js"></script>
 
 </body>
-
 </html>

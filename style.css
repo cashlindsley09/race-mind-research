@@ -7,14 +7,14 @@ body {
     line-height: 1.6;
     }
     
-    h1 {
-    text-align: center;
-    color:#1f4fa8;
-    }
-    
     .container{
     max-width:900px;
     margin:auto;
+    }
+    
+    h1{
+    text-align:center;
+    color:#1f4fa8;
     }
     
     form{
@@ -53,6 +53,13 @@ body {
     
     button:hover{
     background:#1f4fa8;
+    }
+    
+    #successMessage{
+    display:none;
+    color:green;
+    text-align:center;
+    margin-top:15px;
     }
     
     .stats{
