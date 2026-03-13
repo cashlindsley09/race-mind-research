@@ -8,49 +8,55 @@ addDoc
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCG3BJihg9spqBIx27G7Uadp11af0mGgao",
-    authDomain: "race-mind-research.firebaseapp.com",
-    projectId: "race-mind-research",
-    storageBucket: "race-mind-research.firebasestorage.app",
-    messagingSenderId: "302345130110",
-    appId: "1:302345130110:web:8c21f3ba39da0227e0c82f"
-  };
+apiKey: "YOUR KEY",
+authDomain: "YOUR DOMAIN",
+projectId: "YOUR PROJECT",
+storageBucket: "YOUR BUCKET",
+messagingSenderId: "YOUR ID",
+appId: "YOUR APPID"
+};
 
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
+console.log("JavaScript Loaded");
+
+
 const form = document.getElementById("raceForm");
 
-form.addEventListener("submit", async (e)=>{
+
+form.addEventListener("submit", async (e) => {
 
 e.preventDefault();
+
+alert("Submit button clicked");
 
 const data = {
 
 distance: document.getElementById("distance").value,
-
 confidence: Number(document.getElementById("confidence").value),
-
 anxiety: Number(document.getElementById("anxiety").value),
-
 sleep: Number(document.getElementById("sleep").value),
-
 satisfaction: Number(document.getElementById("satisfaction").value),
-
 performance: document.getElementById("performance").value
 
 };
 
+try{
+
 await addDoc(collection(db,"runs"),data);
 
-document.getElementById("successMessage").style.display="block";
+alert("Entry submitted!");
 
 form.reset();
 
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="none";
-},3000);
+}catch(error){
+
+console.error(error);
+alert("Error submitting");
+
+}
 
 });
