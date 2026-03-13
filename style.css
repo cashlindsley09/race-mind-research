@@ -5,68 +5,107 @@ body {
     margin: 0;
     padding: 40px;
     line-height: 1.6;
-    }
-    
-    h1 {
+}
+
+/* Header */
+
+h1 {
     text-align: center;
-    color:#1f4fa8;
-    }
-    
-    .container{
-    max-width:900px;
-    margin:auto;
-    }
-    
-    form{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    max-width:500px;
-    margin:auto;
-    }
-    
-    label{
-    display:block;
-    margin-top:15px;
-    font-weight:bold;
-    }
-    
-    input,select{
-    width:100%;
-    padding:8px;
-    margin-top:5px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    }
-    
-    button{
-    margin-top:20px;
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:6px;
-    background:#2d6cdf;
-    color:white;
-    cursor:pointer;
-    }
-    
-    button:hover{
-    background:#1f4fa8;
-    }
-    
-    .stats{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    margin-top:20px;
-    }
-    
-    canvas{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    margin-top:20px;
-    }
+    margin-bottom: 5px;
+    color: #1f4fa8;
+}
+
+h2 {
+    margin-top: 40px;
+    border-bottom: 2px solid #d6e2f5;
+    padding-bottom: 5px;
+    color: #2d6cdf;
+}
+
+p {
+    margin: 8px 0;
+}
+
+/* Main centered layout */
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Statistic cards */
+
+.stats {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    margin-top: 20px;
+}
+
+/* Charts */
+
+canvas {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    margin-top: 20px;
+}
+
+/* Form styling */
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Labels */
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Inputs */
+
+input, select {
+    width: 100%;
+    padding: 9px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #cfd6e4;
+    font-size: 14px;
+}
+
+/* Input focus effect */
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2d6cdf;
+    box-shadow: 0 0 4px rgba(45,108,223,0.3);
+}
+
+/* Submit button */
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2d6cdf;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #1f4fa8;
+}
