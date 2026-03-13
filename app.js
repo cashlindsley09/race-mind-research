@@ -42,11 +42,7 @@ performance: document.getElementById("performance").value
 
 await addDoc(collection(db,"runs"),data);
 
-document.getElementById("successMessage").style.display="block";
-
-setTimeout(()=>{
-document.getElementById("successMessage").style.display="none";
-},3000);
+alert("Race submitted!");
 
 form.reset();
 
