@@ -61,4 +61,33 @@ body {
     text-align:center;
     margin-top:15px;
     }
- 
+ /* Mobile responsiveness */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    form {
+        width: 100%;
+    }
+    
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    }
